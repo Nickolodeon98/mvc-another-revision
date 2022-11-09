@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -40,5 +41,12 @@ public class BoardController {
             model.addAttribute("post", postOpt.get());
             return "board/show";
         } else return "error";
+    }
+
+    @GetMapping("/all")
+    public String showAllRecords(Model model) {
+        List<Post> allPosts = postRepository.findAll();
+        model.addAttribute("posts", allPosts);
+        return "board/list";
     }
 }
