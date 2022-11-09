@@ -1,24 +1,43 @@
 {{>layouts/header}}
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Contents</th>
+        <th scope="col">Author</th>
+    </tr>
+    </thead>
+    <tbody>
     {{#posts}}
-        <div>
-            {{#title}}
-                {{title}}
-            {{/title}}
-            {{^title}}
-                제목이 없습니다.
-            {{/title}}
-            {{#contents}}
-                {{contents}}
-            {{/contents}}
-            {{^contents}}
-                내용이 없습니다.
-            {{/contents}}
-            {{#author}}
-                {{author}}
-            {{/author}}
-            {{^author}}
-                작성자가 없습니다.
-            {{/author}}
-        </div>
+        <tr>
+            <th scope="row">{{id}}</th>
+            <td>
+                {{#title}}
+                    <a href="/board/{{id}}">{{title}}</a>
+                {{/title}}
+                {{^title}}
+                    제목이 없습니다.
+                {{/title}}
+            </td>
+            <td>
+                {{#contents}}
+                    {{contents}}
+                {{/contents}}
+                {{^contents}}
+                    내용이 없습니다.
+                {{/contents}}
+            </td>
+            <td>
+                {{#author}}
+                    {{author}}
+                {{/author}}
+                {{^author}}
+                    작성자가 없습니다.
+                {{/author}}
+            </td>
+        </tr>
     {{/posts}}
+    </tbody>
+</table>
 {{>layouts/footer}}
