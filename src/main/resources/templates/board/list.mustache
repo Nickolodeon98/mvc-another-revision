@@ -1,0 +1,24 @@
+{{>layouts/header}}
+    {{#posts}}
+        <div>
+            {{#title}}
+                {{title}}
+            {{/title}}
+            {{^title}}
+                제목이 없습니다.
+            {{/title}}
+            {{#contents}}
+                {{contents}}
+            {{/contents}}
+            {{^contents}}
+                내용이 없습니다.
+            {{/contents}}
+            {{#author}}
+                {{author}}
+            {{/author}}
+            {{^author}}
+                작성자가 없습니다.
+            {{/author}}
+        </div>
+    {{/posts}}
+{{>layouts/footer}}
