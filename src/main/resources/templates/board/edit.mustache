@@ -1,0 +1,11 @@
+{{>layouts/header}}
+<form action="/board/{{id}}/update" method="post">
+{{#record}}
+    <input type="hidden" name="id" value="{{id}}"/>
+    <input type="text" name="title" value="{{title}}"/>
+    <input type="text" name="author" value="{{author}}"/>
+    <textarea rows="3" name="contents">{{contents}}</textarea>
+{{/record}}
+    <button type="submit">제출</button>
+</form>
+{{>layouts/footer}}
