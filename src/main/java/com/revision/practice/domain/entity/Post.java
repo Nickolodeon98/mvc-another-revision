@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="board")
 @Getter
+@NoArgsConstructor
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
