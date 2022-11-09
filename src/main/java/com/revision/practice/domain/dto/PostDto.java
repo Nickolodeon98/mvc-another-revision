@@ -2,7 +2,9 @@ package com.revision.practice.domain.dto;
 
 
 import com.revision.practice.domain.entity.Post;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class PostDto {
     private Long id;
     private String title;
