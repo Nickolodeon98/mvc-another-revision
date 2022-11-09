@@ -1,8 +1,16 @@
 {{>layouts/header}}
 {{#post}}
-<div>
-    show 페이지입니다.
-    제목: {{title}} 내용: {{contents}} by {{author}}
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">{{#title}}{{title}}{{/title}}{{^title}}제목이 없습니다.{{/title}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{#author}}{{author}}{{/author}}{{^author}}내용이 없습니다.{{/author}}</h6>
+        <p class="card-text">{{#contents}}{{contents}}{{/contents}}{{^contents}}작성자가 없습니다.{{/contents}}</p>
+        <a href="/board/all" class="card-link">게시판 목록</a>
+        <a href="/board/new" class="card-link">포스팅하기</a>
+    </div>
+    <a href="/board/{{id}}/change" class="btn btn-primary">Edit</a>
 </div>
 {{/post}}
 {{>layouts/footer}}
+
+
