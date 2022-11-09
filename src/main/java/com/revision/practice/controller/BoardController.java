@@ -27,11 +27,16 @@ public class BoardController {
         return "board/new";
     }
 
+    @GetMapping("")
+    public String initialPage() {
+        return "redirect:/board/all";
+    }
+
     @PostMapping("")
     public String createRecord(PostDto postDto) {
         Post savedPost = postRepository.save(postDto.toEntity());
         log.info("GeneratedId:{}", savedPost.getId());
-        return "";
+        return "redirect:/board/all";
     }
 
     @GetMapping("/{id}")
@@ -49,4 +54,18 @@ public class BoardController {
         model.addAttribute("posts", allPosts);
         return "board/list";
     }
+
+    @GetMapping("/{id}/change")
+    public String editRecord(@PathVariable Long id, Model model) {
+        Optional<Post> recordToBeEdited = postRepository.findById(id);
+        if (recordToBeEdited.isPresent()) {
+            model.addAttribute("record", recordToBeEdited.get());
+            return "board/edit";
+        } else {
+            model.addAttribute("message", String.format("id %d가 없습니다.", id));
+            return "error";
+        }
+    }
+
+
 }
