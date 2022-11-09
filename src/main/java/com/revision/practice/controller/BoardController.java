@@ -5,10 +5,10 @@ import com.revision.practice.domain.entity.Post;
 import com.revision.practice.repository.PostRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/board")
@@ -33,4 +33,12 @@ public class BoardController {
         return "";
     }
 
+    @GetMapping("/{id}")
+    public String selectSingleRecord(@PathVariable Long id, Model model) {
+        Optional<Post> postOpt = postRepository.findById(id);
+        if (postOpt.isPresent()) {
+            model.addAttribute("post", postOpt.get());
+            return "board/show";
+        } else return "error";
+    }
 }
